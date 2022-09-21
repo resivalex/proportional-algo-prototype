@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "proportional-algo-prototype"
+version = "0.1.0"
+description = ""
+authors = ["Ivan Reshetnikov <resivalex@gmail.com>"]
+readme = "README.md"
+packages = [{include = "proportional_algo_prototype"}]
+
+[tool.poetry.dependencies]
+python = "^3.9, !=3.9.7"
+streamlit = "^1.12.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
