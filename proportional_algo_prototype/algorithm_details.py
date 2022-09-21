@@ -2,4 +2,5 @@ import streamlit as st
 
 
 def show():
-    st.markdown(open('README.md').read())
+    with open('README.md') as fin:
+        st.markdown(fin.read())

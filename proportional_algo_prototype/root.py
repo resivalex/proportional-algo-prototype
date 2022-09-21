@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 import streamlit as st
 from .carousel import build_html as build_carousel_html
@@ -22,9 +24,17 @@ def show():
         algo = st.session_state['algo']
         algo.update_params(budgets=budgets)
 
+    show_log = budgets == [100123, 100, 100]
+
     def assign_carousel():
         algo.visit(carousel_products)
-        print(f'{datetime.datetime.now()}')
+        with open('log.txt', 'a') as fout:
+            fout.write(f'"{datetime.datetime.now()}"')
+            fout.write('\n')
+            fout.write(json.dumps(algo.info(), indent=2))
+            fout.write('\n')
+            fout.write(json.dumps(algo.last_arrangement))
+            fout.write('\n\n')
 
     def reset_counters():
         algo.reset_counters()
@@ -45,3 +55,7 @@ def show():
 
     if st.checkbox('Show algorithm details'):
         show_algorithm_details()
+
+    if show_log:
+        with open('log.txt') as fin:
+            st.code(fin.read(), language='javascript')
