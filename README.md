@@ -19,7 +19,7 @@ $$
 $$
 error(actual, target) = \begin{cases}
 target - actual & \text{if } actual < target, \\
-\frac{actual - target}{target} - 1 & \text{otherwise}
+\frac{actual - target}{target} & \text{otherwise}
 \end{cases}
 $$
 
